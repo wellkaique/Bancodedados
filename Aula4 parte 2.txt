@@ -1,0 +1,22 @@
+select *from aluno;
+select *from curso;
+
+insert into aluno_curso values(10,1);
+
+CREATE TEMPORARY TABLE relatorio(
+	nome_aluno varchar (255),
+	nome_curso varchar (255)
+);
+
+CREATE VIEW vw_relatorio as
+	select nome _aluno,nome_curso
+	from aluno 
+	join aluno_curso on aluno_curso.id_aluno = aluno.id_aluno
+	join curso on aluno_curso.id_curso = curso.id;
+
+select *from vw_relatorio;
+
+insert into relatorio
+select nome_aluno,nome_curso
+from aluno
+join aluno_curso
